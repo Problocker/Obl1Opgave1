@@ -11,11 +11,10 @@ namespace CSharpOgUnitTests
         private double _pris;
         private int _gear;
 
-        public Cykel()
-        {
-        }
+        //public Cykel()
+        //{
+        //}
 
-        
         #region Constructor
         public Cykel(int id, string farve, double pris, int gear)
         {
@@ -45,9 +44,13 @@ namespace CSharpOgUnitTests
             get => _farve;
             set
             {
+                if (value == null)
+                {
+                    throw new ArgumentNullException();
+                }
                 if (value.Length < 1)
                     throw new ArgumentException();
-                else _farve = value;
+                _farve = value;
             }
         }
 
@@ -69,18 +72,25 @@ namespace CSharpOgUnitTests
             get => _gear;
             set
             {
-                if (3 <= value && value <= 23)
+                if (value < 3 || value > 32)
                 {
-                    throw new ArgumentOutOfRangeException("_gear", "Ulovligheder! Gear skal være imellem 3-32, 3 <= gear <= 32.");
+                    throw new ArgumentOutOfRangeException(nameof(value));
                 }
                 _gear = value;
             }
         }
         #endregion
 
+
+        public Cykel()
+        {
+            Farve = "Grøn";
+            Gear = 22;
+        }
+
         public override string ToString()
         {
-            return $"Id: {Id}, Farve: {Farve}, Gear: {Gear}, Pris: {Pris}";
+            return $"ID: {Id}, Farve: {Farve}, Gear: {Gear}, Pris: {Pris}";
         }
     }
 }
