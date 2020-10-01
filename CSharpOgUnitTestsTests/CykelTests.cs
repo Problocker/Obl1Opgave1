@@ -17,6 +17,7 @@ namespace CSharpOgUnitTestsTests
         {
             _cykel = new Cykel(1, "Tobaksbrun", 42069, 18);
         }
+        
         //Test af hele konstruktøren
         [TestMethod()]
         public void CykelTestConstructor()
@@ -26,6 +27,7 @@ namespace CSharpOgUnitTestsTests
             Assert.AreEqual(42069, _cykel.Pris);
             Assert.AreEqual(18, _cykel.Gear);
         }
+        
         //ID Cykeltest
         [TestMethod()]
         public void IdTest()
@@ -34,6 +36,7 @@ namespace CSharpOgUnitTestsTests
             Assert.AreEqual(0,_cykel.Id);
             Assert.AreEqual(-1,_cykel.Id);
         }
+        
         //Farve Cykeltest
         [TestMethod()]
         public void FarveTest()
@@ -41,6 +44,7 @@ namespace CSharpOgUnitTestsTests
             Assert.AreEqual("Tobaksbrun", _cykel.Farve);
             _cykel.Farve = "";
         }
+        
         //Gear Cykeltest
         [TestMethod()]
         public void PrisTest()
@@ -48,6 +52,7 @@ namespace CSharpOgUnitTestsTests
             Assert.AreEqual(42069, _cykel.Pris);
             Assert.ThrowsException<ArgumentOutOfRangeException>(() => _cykel.Pris = 0);
         }
+        
         //Gear Cykeltest
         [TestMethod()]
         public void GearTest()//Gear: 3 <= gear <= 32
@@ -57,7 +62,6 @@ namespace CSharpOgUnitTestsTests
             Assert.ThrowsException<ArgumentOutOfRangeException>(() => _cykel.Gear = 33);
             Assert.ThrowsException<ArgumentOutOfRangeException>(() => _cykel.Gear = -69);
         }
-
 
         [TestMethod()]
         public void ToStringTest()

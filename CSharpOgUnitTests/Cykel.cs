@@ -19,7 +19,6 @@ namespace CSharpOgUnitTests
             Pris = pris;
             Gear = gear;
         }
-
         //Dummy konstruktør
         public Cykel()
         {
@@ -79,6 +78,7 @@ namespace CSharpOgUnitTests
             }
         }
         #endregion
+        
         //ToString
         public override string ToString()
         {
