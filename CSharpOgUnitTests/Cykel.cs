@@ -11,10 +11,6 @@ namespace CSharpOgUnitTests
         private double _pris;
         private int _gear;
 
-        //public Cykel()
-        //{
-        //}
-
         #region Constructor
         public Cykel(int id, string farve, double pris, int gear)
         {
@@ -23,9 +19,16 @@ namespace CSharpOgUnitTests
             Pris = pris;
             Gear = gear;
         }
+
+        //Dummy konstruktør
+        public Cykel()
+        {
+        }
         #endregion
 
         #region Properties
+
+        //Id, et tal
         public int Id
         {
             get => _id;
@@ -39,34 +42,30 @@ namespace CSharpOgUnitTests
             }
         }
 
+        //Farve, tekst-streng, min 1 tegn langt
         public string Farve
         {
             get => _farve;
             set
             {
-                if (value == null)
-                {
-                    throw new ArgumentNullException();
-                }
                 if (value.Length < 1)
                     throw new ArgumentException();
                 _farve = value;
             }
         }
 
+        //Pris, tal, pris > 0
         public double Pris
         {
             get => _pris;
             set
             {
-                if (value <= 0)
-                {
-                    throw new ArgumentOutOfRangeException("_pris", value, "Stop lige der! Pris må absolut ikke være 0 eller negative værdiger!");
-                }
+                if (value <= 0) throw new ArgumentOutOfRangeException(nameof(value));
                 _pris = value;
             }
         }
 
+        //Gear, 3 <= gear<= 32
         public int Gear
         {
             get => _gear;
@@ -80,17 +79,10 @@ namespace CSharpOgUnitTests
             }
         }
         #endregion
-
-
-        public Cykel()
-        {
-            Farve = "Grøn";
-            Gear = 22;
-        }
-
+        //ToString
         public override string ToString()
         {
-            return $"ID: {Id}, Farve: {Farve}, Gear: {Gear}, Pris: {Pris}";
+            return $"{nameof(Id)}: {Id}, {nameof(Farve)}: {Farve}, {nameof(Pris)}: {Pris}, {nameof(Gear)}: {Gear}";
         }
     }
 }
